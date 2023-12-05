@@ -1,13 +1,15 @@
 const express = require("express");
 const response = require("./network/response");
 const config = require("./config")
-// const login = require("./api/components/login/network")
+const user = require("./api/components/user/network")
 
 const app = express();
 
 // Directory public
 app.use(express.static("./public"));
 app.use(express.json());
+
+app.use("/user", user);
 
 app.get('*', (req, res) => {
     var options = {
