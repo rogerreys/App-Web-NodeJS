@@ -1,8 +1,8 @@
 const express = require("express");
 const response = require("./network/response");
-const config = require("./config")
-const user = require("./api/components/user/network")
-
+const config = require("./config");
+const user = require("./api/components/user/network");
+var path = require("path");
 const app = express();
 
 // Directory public
