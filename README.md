@@ -6,5 +6,6 @@ Para iniciar el proyecto debemos tener instalado docker
 ```docker-compose build```
 2. Posteriormente ejecutar <br>
 ```docker-compose up```
-3. Para visualizar el proyecto se debe acceder por: <br>
+3. Ejecutar el npm i para generar el archivo node_modules <br>
+4. Para visualizar el proyecto se debe acceder por: <br>
 ```http://localhost:3000/```
