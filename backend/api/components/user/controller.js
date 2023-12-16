@@ -1,5 +1,6 @@
-const db = require("../../../bdd/data")
-const TABLE = "user"
+// const db = require("../../../bdd/data")
+const db = require("../../../bdd/connection");
+const TABLE = "user";
 
 function list(){
     return db.list(TABLE)
