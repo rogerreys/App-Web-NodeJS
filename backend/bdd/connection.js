@@ -44,5 +44,16 @@ function list(table) {
         })
     })
 }
+function upsert(table, data) {
+    return new Promise((resolve, reject) => {
+        connection.query(`INSERT INTO maindb.${table} SET ?`, data, (err, data) => {
+            if (err) {
+                console.error("[ERROR LIST]" + err);
+            } else {
+                resolve(data)
+            }
+        })
+    })
+}
 
-module.exports = { list }
+module.exports = { list, upsert }

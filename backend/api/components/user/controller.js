@@ -2,19 +2,19 @@
 const db = require("../../../bdd/connection");
 const TABLE = "user";
 
-function list(){
+function list() {
     return db.list(TABLE)
 }
-function get(id){
+function get(id) {
     return db.get(TABLE, id)
 }
-function upsert(data){
+async function upsert(data) {
     return db.upsert(TABLE, data)
 }
-function remove(id){
+function remove(id) {
     return db.remove(TABLE, id)
 }
-function update(data){
+function update(data) {
     return db.update(TABLE, data)
 }
 
