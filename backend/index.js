@@ -7,10 +7,10 @@ const app = express();
 
 
 app.get('/', (req, res)=>{
-    res.send('<a href=">INICIAR SESIÓN</a>');
+    res.send('<a href="auth/google">INICIAR SESIÓN</a>');
 })
 
-app.listen(5000, ()=> console.log('listen on: 5000'));
+// app.listen(5000, ()=> console.log('listen on: 5000'));
 
 // Directory public
 app.use(express.static("./public"));
