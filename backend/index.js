@@ -5,6 +5,13 @@ const user = require("./api/components/user/network");
 var path = require("path");
 const app = express();
 
+
+app.get('/', (req, res)=>{
+    res.send('<a href=">INICIAR SESIÓN</a>');
+})
+
+app.listen(5000, ()=> console.log('listen on: 5000'));
+
 // Directory public
 app.use(express.static("./public"));
 app.use(express.json());

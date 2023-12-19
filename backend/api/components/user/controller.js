@@ -1,4 +1,4 @@
-// const db = require("../../../bdd/data")
+//const db = require("../../../bdd/data")
 const db = require("../../../bdd/connection");
 const TABLE = "user";
 
