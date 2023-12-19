@@ -6,9 +6,9 @@ var path = require("path");
 const app = express();
 
 
-app.get('/', (req, res)=>{
-    res.send('<a href="auth/google">INICIAR SESIÓN</a>');
-})
+// app.get('/', (req, res)=>{
+//     res.send('<a href="auth/google">INICIAR SESIÓN</a>');
+// })
 
 // app.listen(5000, ()=> console.log('listen on: 5000'));
 
@@ -18,12 +18,12 @@ app.use(express.json());
 
 app.use("/user", user);
 
-app.get('*', (req, res) => {
+app.get('/login', (req, res) => {
     var options = {
         root: path.join(__dirname)
     };
     var site = {
-        page: 'public/index.html',
+        page: 'public/login.html',
         options: options
     }
     response.sucess_page(req, res, site, 200);
