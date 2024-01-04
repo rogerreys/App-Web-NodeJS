@@ -1,3 +1,5 @@
+var path = require("path");
+
 module.exports = {
     api: {
         PORT: process.env.PORT || 3000
@@ -7,5 +9,9 @@ module.exports = {
         user: process.env.USER || 'dbuser',
         password: process.env.PASSWORD_DB || 'root',
         database: process.env.DATABASE || 'maindb'
+    },
+    url:{
+        path: path.join(__dirname),
+        pathFront: "/public/component"
     }
 }
