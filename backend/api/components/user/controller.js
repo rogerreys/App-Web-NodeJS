@@ -8,7 +8,7 @@ function list() {
 function get(id) {
     return db.get(TABLE, id)
 }
-async function upsert(data) {
+function upsert(data){
     return db.upsert(TABLE, data)
 }
 function remove(id) {

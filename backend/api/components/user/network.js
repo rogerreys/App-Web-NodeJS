@@ -17,6 +17,7 @@ function list(req, res) {
     })
 }
 function get(req, res) {
+    
     controller.get(req.params.id).then((resp) => {
         response.sucess(req, res, resp, 200)
     }).catch((error) => {
