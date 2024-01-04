@@ -5,15 +5,15 @@ var config = require("../../../config");
 
 const router = express.Router();
 
-router.get("/auth", login);
+router.get("/products", products);
 
-function login(req, res){
+function products(req, res){
     var options = {
         root: config.url.path
     };
     
     var site = {
-        page: `${config.url.pathFront}/login/login.html`,
+        page: `${config.url.pathFront}/store/store.html`,
         options: options
     }
     response.sucess_page(req, res, site, 200);
