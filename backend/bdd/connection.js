@@ -34,10 +34,11 @@ handleConnection()
 
 // FUNCIONES QUERIES
 function list(table) {
-    return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
         connection.query(`SELECT * FROM ${table}`, (err, data) => {
             if (err) {
                 console.error("[ERROR LIST]" + err);
+                reject(err)
             } else {
                 resolve(data)
             }
