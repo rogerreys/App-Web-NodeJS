@@ -12,6 +12,7 @@ module.exports = {
     },
     url:{
         path: path.join(__dirname),
-        pathFront: "/public/component"
+        pathFront: "/public/component",
+        pathUrlMain: "http://localhost:3000"
     }
 }
