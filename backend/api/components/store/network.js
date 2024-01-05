@@ -1,22 +1,17 @@
 const express = require("express");
+const controller = require("./controller");
 const response = require("../../../network/response");
-
-var config = require("../../../config");
 
 const router = express.Router();
 
 router.get("/products", products);
 
 function products(req, res){
-    var options = {
-        root: config.url.path
-    };
-    
-    var site = {
-        page: `${config.url.pathFront}/store/store.html`,
-        options: options
-    }
-    response.sucess_page(req, res, site, 200);
+    controller.list_products().then((data) => {
+        response.sucess(req, res, data, 200)
+    }).catch((error) => {
+        response.error(req, res, error, 500)
+    })
 }
 
 module.exports = router;
