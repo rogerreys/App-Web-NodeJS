@@ -9,12 +9,13 @@ function get_api_products(){
         .then(data => {
             // Obtener el contenedor donde se agregarán los elementos "item"
             const container = document.getElementById('container-items');
-            
+            // Obtener el div con clase 'row' dentro del contenedor
+            const rowDiv = container.querySelector('.row');
+
             data.message.forEach(element => {
-                console.log("url: "+ element.img,"name: "+ element.name,"price"+ element.price)
 
                 const item = document.createElement('div');
-                item.classList.add('item');
+                item.classList.add('col-4');
                 
                 item.innerHTML = `
                     <figure>
@@ -23,12 +24,15 @@ function get_api_products(){
                     <div class="info-product">
                         <h2>${element.name}</h2>
                         <p class="price">$${element.price}</p>
+                        <h4>Descripcion</h4>
+                        <p>${element.describe_product}</p>
+                        <hr>
+                        <p>Categoría: ${element.catalog_product}</p>
                         <button>Añadir al carrito</button>
                     </div>
-                `;                
-
+                `;
                 // Agregar el nuevo elemento "item" al contenedor
-                container.appendChild(item);
+                rowDiv.appendChild(item);
             });
         })
         .catch(error => console.error('Error al obtener datos desde la API:', error));
