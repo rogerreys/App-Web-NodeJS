@@ -5,6 +5,7 @@ const response = require("../../../network/response");
 const router = express.Router();
 
 router.get("/products", products);
+router.get("/products_catalog", catalog);
 router.post("/products", insert);
 
 function products(req, res){
@@ -20,6 +21,13 @@ function insert(req, res){
     }).catch((error) => {
         response.error(req, res, error, 500)
     })
+}
+function catalog(req, res){
+    controller.list_catalog().then((data) => {
+        response.sucess(req, res, data, 200)
+    }).catch((error) => {
+        response.error(req, res, error, 500)
+    });
 }
 
 module.exports = router;
