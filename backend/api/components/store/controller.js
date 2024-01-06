@@ -5,7 +5,11 @@ function list_products() {
     return db.list(`${TABLE}_products`)
 }
 
+function insert(data) {
+    return db.upsert(`${TABLE}_products`, data)
+}
 
 module.exports = {
-    list_products
+    list_products,
+    insert
 }

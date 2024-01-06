@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Llama a tu función principal o inicializa tu módulo aquí
-    getApi();
+    get_api_products();
 });
 
 function get_api_products(){

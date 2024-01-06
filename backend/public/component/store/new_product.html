@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../assts/js/store/new_product.js"></script>
+</head>
+<body>
+    <h1>Formulario para Guardar Producto</h1>
+
+    <form id="productForm">
+        <label for="productName">Nombre:</label>
+        <input type="text" id="productName" name="name" required>
+
+        <label for="productPrice">Precio:</label>
+        <input type="number" id="productPrice" name="price" required>
+
+        <label for="productDescription">Descripción:</label>
+        <textarea id="productDescription" name="describe_product" required></textarea>
+
+        <label for="productImageURL">URL de la Imagen:</label>
+        <input type="url" id="productImageURL" name="img" required>
+
+        <button type="submit">Guardar Producto</button>
+    </form>
+</body>
+</html>

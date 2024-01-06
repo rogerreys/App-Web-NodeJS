@@ -47,7 +47,7 @@ function list(table) {
 }
 function upsert(table, data) {
     return new Promise((resolve, reject) => {
-        connection.query(`INSERT INTO maindb.${table} SET ?`, data, (err, data) => {
+        connection.query(`INSERT INTO ${table} SET ?`, data, (err, data) => {
             if (err) {
                 console.error("[ERROR LIST]" + err);
             } else {
