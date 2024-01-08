@@ -45,6 +45,18 @@ function list(table) {
         })
     })
 }
+function list_by(table, data) {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM ${table} WHERE ?`, data, (err, data) => {
+            if (err) {
+                console.error("[ERROR LIST]" + err);
+                reject(err)
+            } else {
+                resolve(data)
+            }
+        })
+    })
+}
 function upsert(table, data) {
     return new Promise((resolve, reject) => {
         connection.query(`INSERT INTO ${table} SET ?`, data, (err, data) => {
@@ -57,4 +69,4 @@ function upsert(table, data) {
     })
 }
 
-module.exports = { list, upsert }
+module.exports = { list, list_by, upsert }
