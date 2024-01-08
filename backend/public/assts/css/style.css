@@ -9,7 +9,6 @@
 
 body{
     margin: 0 auto;
-    max-width: 1200px;
     font-family: 'Lato';
     color: #333;
 }
@@ -189,4 +188,9 @@ header{
     color: #fff;
     padding: 15px 10px;
     cursor: pointer;
+}
+
+.custom-image {
+    height: 200px; /* Establece la altura deseada en píxeles o cualquier otra unidad */
+    object-fit: cover; /* Ajusta la imagen manteniendo su relación de aspecto */
 }
