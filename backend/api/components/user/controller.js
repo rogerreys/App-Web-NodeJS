@@ -22,18 +22,20 @@ async function upsert(body) {
 
     const data = {
         name: body.name,
-        nickname: body.username
+        nickname: body.username,
+        email: body.email
     }
     data.id = (body.id) ? body.id : nanoid();
 
-    if (body.password_user || body.username) {
+    if (body.password_user || body.username || body.email) {
         await auth.upsert({
             id: data.id,
             username: body.username,
-            password: body.password_user
+            password: body.password_user,
+            email: body.email
         })
     }
-    
+
     return db.upsert(TABLE, data)
 }
 function remove(id) {

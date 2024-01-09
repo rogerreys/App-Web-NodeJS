@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/login", login);
 
 function login(req, res) {
-    controller.login(req.body.username, req.body.password)
+    controller.login(req.body.email, req.body.password)
         .then((list) => {
             response.sucess(req, res, list, 200)
         })
