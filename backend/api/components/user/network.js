@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/", list);
 router.get("/:id", get);
-router.post("/add", upsert);
+router.post("/", upsert);
 
 function list(req, res) {
     controller.list().then((data) => {

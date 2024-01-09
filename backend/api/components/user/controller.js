@@ -1,5 +1,15 @@
 // const db = require("../../../bdd/data")
 const db = require("../../../bdd/connection");
+const auth = require('../auth/controller');
+
+let nanoid;
+import('nanoid').then(module => {
+    nanoid = module.nanoid;
+    // el resto de tu código donde necesitas nanoid
+}).catch(error => {
+    console.error("Error al cargar nanoid:", error);
+});
+
 const TABLE = "user";
 
 function list() {
@@ -8,7 +18,22 @@ function list() {
 function get(id) {
     return db.get(TABLE, id)
 }
-function upsert(data){
+async function upsert(body) {
+
+    const data = {
+        name: body.name,
+        nickname: body.username
+    }
+    data.id = (body.id) ? body.id : nanoid();
+
+    if (body.password_user || body.username) {
+        await auth.upsert({
+            id: data.id,
+            username: body.username,
+            password: body.password_user
+        })
+    }
+    
     return db.upsert(TABLE, data)
 }
 function remove(id) {

@@ -4,6 +4,22 @@ const store = require('../../../bdd/connection');
 
 const TABLA = "auth"
 
+async function upsert(data) {
+    const authData = {
+        id: data.id
+    }
+    if (data.username) {
+        authData.username = data.username;
+    }
+    if (data.password) {
+        const salt = await bcrypt.genSalt(5);
+        const secPass = await bcrypt.hash(data.password, salt);
+        authData.password = secPass;
+    }
+    
+    return store.upsert(TABLA, authData);
+}
+
 function login(username, password) {
     return new Promise((resolve, reject) => {
         store.get(TABLA, { username: username }).then((result) => {
@@ -18,4 +34,4 @@ function login(username, password) {
     })
 }
 
-module.exports = { login }
+module.exports = { upsert, login }
