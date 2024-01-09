@@ -14,5 +14,8 @@ module.exports = {
         path: path.join(__dirname),
         pathFront: "/public/component",
         pathUrlMain: "http://localhost:3000"
+    },
+    jwt: {
+        secret: process.env.JWT_SECRET || 'secret'
     }
 }
