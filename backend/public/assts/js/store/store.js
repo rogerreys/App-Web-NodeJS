@@ -1,13 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     let url_products = "http://localhost:3000/api/store/products"
-
+    init();
     // Llama a tu función principal o inicializa tu módulo aquí
     get_api_products(url_products);
-    // get_api_products_catalog_by(1)
-    //     .then(res => {
-    //         var str = `<button type="button" class="btn btn-success">${res}</button>`
-    //     })
-
 });
 
 function get_api_products(url) {
@@ -24,7 +19,10 @@ function get_api_products(url) {
             data.message.forEach(element => {
 
                 const item = document.createElement('div');
-                item.classList.add('col-4');
+                item.classList.add('col-3');
+                // Central los card
+                item.classList.add('d-flex');
+                item.classList.add('justify-content-center');
                 // Api Catalogos
                 get_api_products_catalog_by(element.catalog_product).then(res => {
                     item.innerHTML = `
@@ -40,7 +38,7 @@ function get_api_products(url) {
                         </div>
                     `;
                 });
-                
+
                 // Agregar el nuevo elemento "item" al contenedor
                 rowDiv.appendChild(item);
             });
@@ -58,6 +56,79 @@ async function get_api_products_catalog_by(id) {
     } catch (error) {
         console.error('Error al obtener datos desde la API:', error);
         return "";
-        // throw error; // Propaga el error para que pueda ser manejado externamente si es necesario                
     }
+}
+async function init() {
+    let data = {}
+    token = get_toke();
+    if (token) {
+        data = await get_authentication(token);
+    }
+    get_menu(data);
+}
+function get_toke() {
+    // Obtener token desde localStorage
+    return localStorage.getItem('secure token')
+}
+async function get_authentication(accessToken) {
+    const apiUrl = "http://localhost:3000/api/auth/decode";
+    // Configuración de la solicitud
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+            // Puedes agregar otros encabezados según sea necesario
+        }
+    };
+    let res;
+
+    await fetch(apiUrl, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la solicitud: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Manejar la respuesta exitosa aquí
+            res = data.message;
+        })
+        .catch(error => {
+            // Manejar errores aquí
+            res = `Error en la solicitud: ${error}`;
+        });
+    return res;
+}
+
+function get_menu(data) {
+    const container = document.querySelector('.dropdown-menu');
+
+    if (data.username) {
+        container.appendChild(list_menu("#", `Bienvenido '${data.username}'`))
+        container.appendChild(list_menu(null, null, true))
+    }
+    else {
+        container.appendChild(list_menu("http://localhost:3000/login/auth", "Iniciar sesion"))
+    }
+    container.appendChild(list_menu("#", "Catalogos"));
+}
+
+function list_menu(ref, msg, sep = false) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    const hr = document.createElement('hr');
+
+    if (sep) {
+        // <li><hr class="dropdown-divider"></li>
+        hr.classList.add('dropdown-divider');
+        li.appendChild(hr)
+    } else {
+        a.classList.add('dropdown-item');
+        a.setAttribute("href", ref)
+        a.textContent = msg
+        li.appendChild(a)
+    }
+
+    return li
 }

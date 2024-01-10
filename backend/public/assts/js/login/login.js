@@ -22,9 +22,15 @@ function login(url) {
             .then(response => response.json())
             .then(data => {
                 if (data.status == 200) {
-                    console.log('Producto guardado:', data);
+                    // Almacenar token en localStorage
+                    localStorage.setItem('secure token', data.message);
                     // Crear el elemento div y agregarlo al contenedor
                     container.appendChild(message("alert-primary", "Inicio de sesión correctamente"));
+                    // Redireccionar a otra página
+                    setTimeout(function () {
+                        // Redireccionar a otra página
+                        window.location.href = 'http://localhost:3000/store/products';
+                    }, 2000);
                 } else {
                     container.appendChild(message("alert-danger", data.message));
                 }
