@@ -14,14 +14,14 @@ function handleConnection() {
     connection = mysql.createConnection(dbconfig);
     connection.connect((err) => {
         if (err) {
-            console.log("[DB ERROR]" + err);
+            console.info("[DB ERROR]" + err);
             setTimeout(handleConnection, 2000);
         } else {
-            console.log("--- DB CONNECTED ---");
+            console.info("--- DB CONNECTED ---");
         }
     });
     connection.on('error', (err) => {
-        console.log("[DB ERROR]" + err);
+        console.info("[DB ERROR]" + err);
         if (err.code === "PROTOCOL_CONNECTION_LOST") {
             handleConnection();
         } else {

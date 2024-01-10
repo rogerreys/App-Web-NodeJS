@@ -5,7 +5,6 @@ const error = require("../src/utils/error");
 const secret = config.jwt.secret;
 
 function sign(data) {
-    console.log("jwt: ", jwt.sign(data, secret))
     return jwt.sign(data, secret)
 }
 

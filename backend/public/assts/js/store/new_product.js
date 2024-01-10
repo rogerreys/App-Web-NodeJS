@@ -44,7 +44,6 @@ function new_api_products(){
         .then(data => {
             // Puedes agregar aquí lógica adicional después de guardar el producto
             alert('Producto guardado exitosamente!');
-            console.log('Producto guardado:', data);     
             // Redireccionar a otra página
             setTimeout(function () {
                 // Redireccionar a otra página

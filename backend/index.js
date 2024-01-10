@@ -34,5 +34,5 @@ app.use('/api/store', api_store);
 app.use('/api/auth', auth);
 
 app.listen(config.api.PORT, () => {
-    console.log(`Server is running on http://localhost:${config.api.PORT}`);
+    console.info(`Server is running on http://localhost:${config.api.PORT}`);
 });
