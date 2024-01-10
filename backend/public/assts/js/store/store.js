@@ -106,15 +106,19 @@ function get_menu(data) {
 
     if (data.username) {
         container.appendChild(list_menu("#", `Bienvenido '${data.username}'`))
-        container.appendChild(list_menu(null, null, true))
+        container.appendChild(list_menu(null, null, null, true))
     }
     else {
         container.appendChild(list_menu("http://localhost:3000/login/auth", "Iniciar sesion"))
     }
     container.appendChild(list_menu("#", "Catalogos"));
+    if (data.username) {
+        container.appendChild(list_menu("#", 'Cerrar sesion', 'closeSesion'))
+    }
+    close();
 }
 
-function list_menu(ref, msg, sep = false) {
+function list_menu(ref, msg, id = null, sep = false,) {
     const li = document.createElement('li');
     const a = document.createElement('a');
     const hr = document.createElement('hr');
@@ -124,6 +128,9 @@ function list_menu(ref, msg, sep = false) {
         hr.classList.add('dropdown-divider');
         li.appendChild(hr)
     } else {
+        if (id != null) {
+            a.id = id
+        }
         a.classList.add('dropdown-item');
         a.setAttribute("href", ref)
         a.textContent = msg
@@ -131,4 +138,14 @@ function list_menu(ref, msg, sep = false) {
     }
 
     return li
+}
+
+function close() {
+    const close = document.getElementById('closeSesion');
+
+    close.addEventListener('click', function () {
+        // Eliminar la variable 'miToken' de localStorage
+        localStorage.removeItem('secure token');
+        window.location.href = 'http://localhost:3000/store/products';
+    });
 }
