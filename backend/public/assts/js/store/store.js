@@ -110,6 +110,7 @@ function get_menu(data) {
     }
     else {
         container.appendChild(list_menu("http://localhost:3000/login/auth", "Iniciar sesion"))
+        container.appendChild(list_menu("http://localhost:3000/user/add", "Registrarse"))
     }
     container.appendChild(list_menu("#", "Catalogos"));
     if (data.username) {
