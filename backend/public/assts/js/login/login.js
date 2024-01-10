@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     login(url_products);
 });
 
-function login(url){
+function login(url) {
     document.getElementById('login').addEventListener('submit', function (event) {
         event.preventDefault();
-
         // Obtener los valores del formulario
         const formData = new FormData(this);
-
+        const container = document.querySelector(".container");
         // Realizar una solicitud POST a la API
         fetch(url, {
             method: 'POST',
@@ -20,13 +19,24 @@ function login(url){
             },
             body: JSON.stringify(Object.fromEntries(formData)),
         })
-        .then(response => response.json())
-        .then(data => {
-            // Puedes agregar aquí lógica adicional después de guardar el producto
-            alert('Inicio session correctamente');
-            console.log('Producto guardado:', data);
-        })
-        .catch(error => console.error('Error al guardar el producto:', error));
+            .then(response => response.json())
+            .then(data => {
+                if (data.status == 200) {
+                    console.log('Producto guardado:', data);
+                    // Crear el elemento div y agregarlo al contenedor
+                    container.appendChild(message("alert-primary", "Inicio de sesión correctamente"));
+                } else {
+                    container.appendChild(message("alert-danger", data.message));
+                }
+            })
+            .catch(error => console.error('Error al guardar el producto:', error));
     });
+}
 
+function message(alert, msg) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert ${alert}`; // 'alert alert-primary';
+    alertDiv.setAttribute('role', 'alert');
+    alertDiv.textContent = msg; //'Inicio de sesión correctamente';
+    return alertDiv;
 }
