@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.wrapper{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background : linear-gradient(90deg,#DEB887,#f2f2f2);
+    border-radius: 50px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, .3);
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wrapper .text-right{
+    position: absolute;
+    top: 180px;
+    right: 30px;
+    color:#000000;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    font-size: 50px;
+    user-select: none;
+    font-family: Georgia, 'Times New Roman', Times, serif,cursive ;
+}   
+
+.wrapper .text-right2{
+    position: absolute;
+    top: 250px;
+    right: 4px;
+    color:#000000;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    font-size: 50px;
+    user-select: none;
+    font-family: Georgia, 'Times New Roman', Times, serif,cursive ;
+}
+
+.wrapper img{
+    position: absolute;
+    right: -450px;
+    bottom: -150px;
+    width: 1800px;
+    height: 800px;
+    
+}
+
+.form-wrapper {
+    z-index: 2;
+}
+
+.wrapper .form-wrapper.login{
+    transition: .6s ease-in-out;
+    transition-delay: .6s;
+}
+
+.wrapper.active .form-wrapper.login {
+    transition-delay: 0s;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-wrapper.register {
+    position: absolute;
+    margin-top: 15px;
+    transform: translateX(-400px);
+    transition: .6s ease-in-out;
+}
+
+.wrapper.active .form-wrapper.register {
+    transition-delay: .6s;
+    transform: translateX(0);
+}
+
+h2{
+    font-size: 2.5em;
+    text-align: center;
+    color: #000000;
+}
+
+.input-box{
+    position: relative;
+    width: 320px;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #000000;
+    outline: none;
+    border-radius: 40px;
+    font-size: 1em;
+    color: #000000;
+    padding: 0 20px 0 40px;
+}
+
+.input-box input::placeholder{
+    color: rgba(0, 0, 0, 0.3);
+
+}
+
+.input-box .icon{
+    position: absolute;
+    left: 15px;
+    color: #000000;
+    font-size: 1.2em;
+    line-height: 55px;
+}
+
+.forgot-pass {
+    margin: -15px 0 15px 15px;
+}
+
+.forgot-pass a{
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-pass a:hover{
+    text-decoration: underline;
+}
+
+button{
+    width: 100%;
+    height: 45px;
+    background: #000000;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #DEB887;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.sign-link{
+    font-size: .9em;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.sign-link p{
+    color: #000000;
+}
+
+.sign-link p a{
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sign-link p a:hover{
+    text-decoration: underline;
+}

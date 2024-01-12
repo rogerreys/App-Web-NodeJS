@@ -1,16 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assts/css/style.css" />
+    <link rel="stylesheet" href="../../assts/css/login.css" />
+    <title>Login</title>
 </head>
 <body>
-    <form>
-        <input name="user">user</input>
-        <input name="password">password</input>
-    </form>
-    <a href="auth/google">INICIAR SESIÓN</a>
+    <div class="wrapper">
+        <img src="../imagenes/poridentidad.png" alt="">
+        <h2 class="text-right">BIENVENIDO</h2>
+        <h2 class="text-right2">TIENE TODO🎁</h2>
+        <div class="form-wrapper login">
+            <form action="">
+                <h2>LOGIN</h2>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email"
+                    placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password"
+                    placeholder="Password" required>
+                </div>
+                <div class="forgot-pass">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                    <button type="submit">Login
+                    </button>
+                <div class="sign-link">
+                    <p>Don't have an account?
+                        <a href="#" onclick="registroActivado()">Registrar</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="form-wrapper register">
+            <form action="">
+                <h2>REGISTRO</h2>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="nombres"
+                    placeholder="Nombres" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email"
+                    placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password"
+                    placeholder="Password" required>
+                </div>
+                <div class="forgot-pass">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit">Registrar
+                </button>
+                <div class="sign-link">
+                    <p>Already have an account?
+                        <a href="#" onclick="loginActivado()">Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <!-- <a href="auth">INICIAR SESIÓN</a> -->
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../../assts/js/store/login.js"></script>
 </body>
 </html>
