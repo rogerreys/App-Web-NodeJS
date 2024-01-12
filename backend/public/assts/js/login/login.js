@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     let url_products = "http://localhost:3000/api/auth/login"
-
     // Llama a tu función principal o inicializa tu módulo aquí
     login(url_products);
 });
@@ -12,6 +11,7 @@ function login(url) {
         const formData = new FormData(this);
         const container = document.querySelector(".container");
         // Realizar una solicitud POST a la API
+        console.log("formData:", formData)
         fetch(url, {
             method: 'POST',
             headers: {
